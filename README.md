@@ -39,6 +39,7 @@ $ git submodule update --init
 ## Etape 2 : Paquets de développement Python
 
 Le projet a besoin des modules d'extension Python qui fournissent des liaisons au code C++ à l'aide de l'API Python C.
+
 Donc, si vous voulez que le projet crée des liaisons pour Python 3.6, installez ces packages avant de continuer :
 
 ``` bash
@@ -61,6 +62,7 @@ $ cmake ../
 ## Etape 4 : Téléchargement des modèles
 
 Le projet est livré avec de nombreux réseaux déja entrainer que vous pouvez choisir de télécharger et d'installer via l' outil Model Downloader.
+
 Le menu suivant s'affichera, appuyez sur la touche `espace` pour séléctionner les réseau à télécharger. Appuyez sur `entrer` pour continuer.
 
 <img src="https://raw.githubusercontent.com/dusty-nv/jetson-inference/python/docs/images/download-models.jpg" width="650">
