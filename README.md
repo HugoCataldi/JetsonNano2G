@@ -2,6 +2,22 @@
 
 Toute les information liées au projet son ici : https://github.com/dusty-nv/jetson-inference
 
+Résumé des commandes à effectuer :
+``` bash
+$ sudo apt-get update
+$ sudo apt-get install git cmake
+$ git clone https://github.com/dusty-nv/jetson-inference
+$ cd jetson-inference
+$ git submodule update --init
+$ sudo apt-get install libpython3-dev python3-numpy
+$ mkdir build
+$ cd build
+$ cmake ../
+$ make
+$ sudo make install
+$ sudo ldconfig
+```
+
 
 ## Etape 1 : Téléchargement du projet
 
@@ -12,6 +28,7 @@ $ sudo apt-get update
 $ sudo apt-get install git cmake
 ```
 
+
 Après on clone le projet `jetson-inference` :
 
 ``` bash
@@ -21,7 +38,7 @@ $ git submodule update --init
 ```
 
 
-##  Etape 2 : Paquets de développement Python
+## Etape 2 : Paquets de développement Python
 
 Le projet a besoin des modules d'extension Python qui fournissent des liaisons au code C++ à l'aide de l'API Python C.
 
@@ -32,7 +49,7 @@ $ sudo apt-get install libpython3-dev python3-numpy
 ``` 
 
 
-## Configuration avec la commande CMake
+## Etape 3 : Configuration avec la commande CMake
 
 Ensuite, créez un répertoire pour construire le projet et exécutez la commande `cmake`  . Lorsque `cmake` est exécuté, un script est lancé (`CMakePreBuild.sh`) qui installera toutes les dépendances requises et téléchargera les modèles DNN(Deep Neural Network) pour vous.
 
@@ -43,7 +60,7 @@ $ cmake ../
 ```
 
 
-## Téléchargement des modèles
+## Etape 4 : Téléchargement des modèles
 
 Le projet est livré avec de nombreux réseaux déja entrainer que vous pouvez choisir de télécharger et d'installer via l' outil Model Downloader.
 
@@ -59,7 +76,7 @@ $ cd jetson-inference/tools
 $ ./download-models.sh
 ```
 
-## Installation de PyTorch
+## Etape 5 : Installation de PyTorch
 
 Le menu suivant s'affichera, appuyez sur la touche `espace` pour séléctionner la version de PyTorch. Appuyez sur `entrer` pour continuer.
 
@@ -72,9 +89,9 @@ $ cd jetson-inference/build
 $ ./install-pytorch.sh
 ```
 
-## Compilation du projet
+## Etape 6 : Compilation du projet
 
-Assurez-vous que vous êtes toujours dans le `jetson-inference/buildrépertoire`  créé ci-dessus à l'étape 3.
+Assurez-vous que vous êtes toujours dans le répertoire `jetson-inference/build` .
 
 Après lancez la commande suivante `make` suivie de `sudo make install` pour construire les librairie, Python extension bindings, and code samples:
 
