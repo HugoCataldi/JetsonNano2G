@@ -1,14 +1,17 @@
+# Installation des outils pour utiliser le projet "jetson-inference"
 
-## Cloning the Repo
+Toute les information liées au projet son ici : https://github.com/dusty-nv/jetson-inference
 
-To download the code, navigate to a folder of your choosing on the Jetson.  First, make sure git and cmake are installed:
+## Etape 1 : Téléchargement du projet
+
+Pour télécharger le code, assurez-vous que git et cmake sont installés.
 
 ``` bash
 $ sudo apt-get update
 $ sudo apt-get install git cmake
 ```
 
-Then clone the `jetson-inference` project:
+Après on clone le projet `jetson-inference` :
 
 ``` bash
 $ git clone https://github.com/dusty-nv/jetson-inference
@@ -16,34 +19,26 @@ $ cd jetson-inference
 $ git submodule update --init
 ```
 
-Remember to run the `git submodule update --init` step (or clone with the `--recursive` flag).
+##  Etape 2 : Paquets de développement Python
 
-## Python Development Packages
+La fonctionnalité Python de ce projet est implémentée via des modules d'extension Python qui fournissent des liaisons au code C++ natif à l'aide de l'API Python C. 
 
-The Python functionality of this project is implemented through Python extension modules that provide bindings to the native C++ code using the Python C API.  While configuring the project, the repo searches for versions of Python that have development packages installed on the system, and will then build the bindings for each version of Python that's present (e.g. Python 2.7, 3.6, and 3.7).  It will also build numpy bindings for versions of numpy that are installed.
-
-By default, Ubuntu comes with the `libpython-dev` and `python-numpy` packages pre-installed (which are for Python 2.7).  Although the Python 3.6 interpreter is pre-installed by Ubuntu, the Python 3.6 development packages (`libpython3-dev`) and `python3-numpy` are not.  These development packages are required for the bindings to build using the Python C API.  
-
-So if you want the project to create bindings for Python 3.6, install these packages before proceeding:
+Donc, si vous voulez que le projet crée des liaisons pour Python 3.6, installez ces packages avant de continuer :
 
 ``` bash
 $ sudo apt-get install libpython3-dev python3-numpy
 ``` 
 
-Installing these additional packages will enable the repo to build the extension bindings for Python 3.6, in addition to Python 2.7 (which is already pre-installed).  Then after the build process, the [`jetson.inference`](https://rawgit.com/dusty-nv/jetson-inference/python/docs/html/python/jetson.inference.html) and [`jetson.utils`](https://rawgit.com/dusty-nv/jetson-inference/python/docs/html/python/jetson.utils.html) packages will be available to use within your Python environments.
-
 
 ## Configuring with CMake
 
-Next, create a build directory within the project and run `cmake` to configure the build.  When `cmake` is run, a script is launched ([`CMakePreBuild.sh`](../CMakePreBuild.sh)) that will install any required dependencies and download DNN models for you.
+Ensuite, créez un répertoire pour construire le projet et exécutez la commande `cmake`  . Lorsque `cmake` est exécuté, un script est lancé (`CMakePreBuild.sh`) qui installera toutes les dépendances requises et téléchargera les modèles DNN(Deep Neural Network) pour vous.
 
 ``` bash
-$ cd jetson-inference    # omit if working directory is already jetson-inference/ from above
 $ mkdir build
 $ cd build
 $ cmake ../
 ```
-
 
 ## Downloading Models
 
@@ -75,7 +70,7 @@ $ ./install-pytorch.sh
 
 ## Compiling the Project
 
-Make sure you are still in the `jetson-inference/build` directory, created above in step #3.
+Assurez-vous que vous êtes toujours dans le `jetson-inference/buildrépertoire`  créé ci-dessus à l'étape 3.
 
 Then run `make` followed by `sudo make install` to build the libraries, Python extension bindings, and code samples:
 
