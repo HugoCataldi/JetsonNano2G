@@ -19,7 +19,7 @@ $ sudo make install
 $ sudo ldconfig
 ```
 
-Le menu suivant s'affichera, appuyez sur la touche `espace` pour séléctionner les réseau à télécharger. Appuyez sur `entrer` pour continuer.
+Le menu suivant s'affichera, appuyez sur la touche `espace` pour sélectionner les réseaux de neurones à télécharger. Appuyez sur `entrer` pour continuer.
 
 <img src="images/download-models.jpg" width="650">
 
@@ -30,7 +30,7 @@ $ cd jetson-inference/tools
 $ ./download-models.sh
 ```
 
-Le menu suivant s'affichera, appuyez sur la touche `espace` pour séléctionner la version de PyTorch. Appuyez sur `entrer` pour continuer.
+Le menu suivant s'affichera, appuyez sur la touche `espace` pour sélectionner la version de PyTorch. Appuyez sur `entrer` pour continuer.
 
 <img src="images/pytorch-installer.jpg" width="650">
 
@@ -65,13 +65,13 @@ $ sh -c "echo \"export ROS_MASTER_URI=http://localhost:11311\" >> ~/.bashrc"
 $ sh -c "echo \"export ROS_HOSTNAME=localhost\" >> ~/.bashrc"
 ```
 
-Pour configurer ROS, il faut editer le fichier bashrc avec la commande suivante :
+Pour configurer ROS, il faut éditer  le fichier bashrc avec la commande suivante :
 ``` bash
 $ nano ~/.bashrc
 $ source ~/.bashrc
 ```
 <img src="images/bashrc.PNG" width="650">
 
-**ROS_MASTER_URI** : L'adresse ip de l'ordinateur qui lance le noeud ROS master 
+**ROS_MASTER_URI** : L'adresse IP de l'ordinateur qui lance le nœud ROS master
 
-**ROS_HOSTNAME** : L'adresse ip du jetson nano
+**ROS_HOSTNAME** : L'adresse IP du Jetson Nano
