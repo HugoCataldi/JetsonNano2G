@@ -1,3 +1,7 @@
+# Installation du JetPack
+
+Toutes les informations liées à l'installation du jetpack sont ici : https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-2gb-devkit
+
 # Installation des outils pour utiliser le projet "jetson-inference"
 
 Toutes les informations liées au projet sont ici : https://github.com/dusty-nv/jetson-inference
