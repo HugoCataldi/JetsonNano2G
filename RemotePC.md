@@ -53,7 +53,7 @@ $ source ~/.bashrc
 
 **ROS_MASTER_URI** : L'adresse IP de l'ordinateur qui lance le nœud ROS master
 
-**ROS_HOSTNAME** : L'adresse IP du Jetson Nano
+**ROS_HOSTNAME** : L'adresse IP de l'ordinateur qui lance le nœud ROS master
 
 **TURTLEBOT3_MODEL** : Model du turtlebot [ waffle_pi , waffle , burger ]
 
