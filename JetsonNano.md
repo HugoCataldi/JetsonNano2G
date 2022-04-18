@@ -69,7 +69,7 @@ $ sh -c "echo \"export ROS_MASTER_URI=http://localhost:11311\" >> ~/.bashrc"
 $ sh -c "echo \"export ROS_HOSTNAME=localhost\" >> ~/.bashrc"
 ```
 
-Pour configurer ROS, il faut éditer  le fichier bashrc avec la commande suivante :
+### Pour configurer ROS, il faut éditer  le fichier bashrc avec la commande suivante :
 ``` bash
 $ nano ~/.bashrc
 $ source ~/.bashrc
