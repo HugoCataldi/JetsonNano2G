@@ -21,7 +21,7 @@ $ sudo ldconfig
 
 Le menu suivant s'affichera, appuyez sur la touche `espace` pour séléctionner les réseau à télécharger. Appuyez sur `entrer` pour continuer.
 
-<img src="https://raw.githubusercontent.com/dusty-nv/jetson-inference/python/docs/images/download-models.jpg" width="650">
+<img src="https://raw.githubusercontent.com/hugocataldi/jetsonnano2g/download-models.jpg" width="650">
 
 Si vous voulez relancer l'**outil de téléchargement de modèles** plus tard, utilisez la commande suivante :
 
@@ -32,7 +32,7 @@ $ ./download-models.sh
 
 Le menu suivant s'affichera, appuyez sur la touche `espace` pour séléctionner la version de PyTorch. Appuyez sur `entrer` pour continuer.
 
-<img src="https://raw.githubusercontent.com/dusty-nv/jetson-inference/python/docs/images/pytorch-installer.jpg" width="650">
+<img src="https://raw.githubusercontent.com/hugocataldi/jetsonnano2g/pytorch-installer.jpg" width="650">
 
 Si vous voulez relancer l'**outil d'installation de Pytorch** plus tard, utilisez la commande suivante :
 
@@ -70,6 +70,7 @@ Pour configurer ROS, il faut editer le fichier bashrc avec la commande suivante 
 $ nano ~/.bashrc
 $ source ~/.bashrc
 ```
+<img src="https://raw.githubusercontent.com/hugocataldi/jetsonnano2g/capturae.png" width="650">
 
 **ROS_MASTER_URI** : L'adresse ip de l'ordinateur qui lance le noeud ROS master 
 
