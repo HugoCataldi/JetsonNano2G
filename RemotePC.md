@@ -35,9 +35,9 @@ $ cd ~/catkin_ws/src/
 $ git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation.git
 $ git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation_simulations.git
 $ git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
-$ sudo apt install ros-kinetic-ros-control*
-$ sudo apt install ros-kinetic-control*
-$ sudo apt install ros-kinetic-moveit*
+$ sudo apt install ros-noetic-ros-control*
+$ sudo apt install ros-noetic-control*
+$ sudo apt install ros-noetic-moveit*
 $ cd ~/catkin_ws && catkin_make
 
 $ sudo apt-get install python3-catkin-pkg-modules
