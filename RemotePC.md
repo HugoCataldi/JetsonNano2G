@@ -1,6 +1,6 @@
 # Installation d'Ubuntu 20.04
 
-Toutes les informations liées à l'installation d'ubuntu sont ici : https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-2gb-devkit
+Toutes les informations liées à l'installation d'ubuntu sont ici : https://releases.ubuntu.com/20.04/
 
 # Installation de ROS Noetic
 
@@ -44,7 +44,7 @@ $ sudo apt-get install python3-catkin-pkg-modules
 $ sudo apt-get install python3-rospkg-modules
 ```
 
-Pour configurer ROS, il faut éditer  le fichier bashrc avec la commande suivante :
+### Pour configurer ROS, il faut éditer  le fichier bashrc avec la commande suivante :
 ``` bash
 $ nano ~/.bashrc
 $ source ~/.bashrc
