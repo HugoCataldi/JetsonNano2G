@@ -64,3 +64,13 @@ $ rosdep update
 $ sh -c "echo \"export ROS_MASTER_URI=http://localhost:11311\" >> ~/.bashrc"
 $ sh -c "echo \"export ROS_HOSTNAME=localhost\" >> ~/.bashrc"
 ```
+
+Pour configurer ROS, il faut editer le fichier bashrc avec la commande suivante :
+``` bash
+$ nano ~/.bashrc
+$ source ~/.bashrc
+```
+
+**ROS_MASTER_URI** : L'adresse ip de l'ordinateur qui lance le noeud ROS master 
+
+**ROS_HOSTNAME** : L'adresse ip du jetson nano
