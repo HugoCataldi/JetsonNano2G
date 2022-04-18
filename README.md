@@ -1,6 +1,8 @@
 # Installation des outils pour utiliser le projet "jetson-inference"
 
-Toute les information liées au projet son ici : https://github.com/dusty-nv/jetson-inference
+Toutes les informations liées au projet sont ici : https://github.com/dusty-nv/jetson-inference
+
+Résumé des commandes à effectuer :
 
 ``` bash
 $ sudo apt-get update
@@ -16,52 +18,6 @@ $ make
 $ sudo make install
 $ sudo ldconfig
 ```
-
-## Etape 1 : Téléchargement du projet
-
-Pour télécharger le code, assurez-vous que git et cmake sont installés.
-
-``` bash
-$ sudo apt-get update
-$ sudo apt-get install git cmake
-```
-
-Après on clone le projet `jetson-inference` :
-
-``` bash
-$ git clone https://github.com/dusty-nv/jetson-inference
-$ cd jetson-inference
-$ git submodule update --init
-```
-
-
-
-## Etape 2 : Paquets de développement Python
-
-Le projet a besoin des modules d'extension Python qui fournissent des liaisons au code C++ à l'aide de l'API Python C.
-
-Donc, si vous voulez que le projet crée des liaisons pour Python 3.6, installez ces packages avant de continuer :
-
-``` bash
-$ sudo apt-get install libpython3-dev python3-numpy
-``` 
-
-
-
-## Etape 3 : Configuration avec la commande CMake
-
-Ensuite, créez un répertoire pour construire le projet et exécutez la commande `cmake` . Lorsque `cmake` est exécuté, un script est lancé (`CMakePreBuild.sh`) qui installera toutes les dépendances requises et téléchargera les modèles DNN(Deep Neural Network) pour vous.
-
-``` bash
-$ mkdir build
-$ cd build
-$ cmake ../
-```
-
-
-## Etape 4 : Téléchargement des modèles
-
-Le projet est livré avec de nombreux réseaux déja entrainer que vous pouvez choisir de télécharger et d'installer via l' outil Model Downloader.
 
 Le menu suivant s'affichera, appuyez sur la touche `espace` pour séléctionner les réseau à télécharger. Appuyez sur `entrer` pour continuer.
 
@@ -74,10 +30,6 @@ $ cd jetson-inference/tools
 $ ./download-models.sh
 ```
 
-
-
-## Etape 5 : Installation de PyTorch
-
 Le menu suivant s'affichera, appuyez sur la touche `espace` pour séléctionner la version de PyTorch. Appuyez sur `entrer` pour continuer.
 
 <img src="https://raw.githubusercontent.com/dusty-nv/jetson-inference/python/docs/images/pytorch-installer.jpg" width="650">
@@ -89,16 +41,26 @@ $ cd jetson-inference/build
 $ ./install-pytorch.sh
 ```
 
+# Installation de ROS Melodic
 
+Toutes les informations liées à sont ici : http://wiki.ros.org/melodic/Installation/Ubuntu
 
-## Etape 6 : Compilation du projet
-
-Assurez-vous que vous êtes toujours dans le répertoire `jetson-inference/build` .
-
-Après lancez la commande suivante `make` suivie de `sudo make install` pour construire les librairie, Python extension bindings, and code samples:
+Résumé des commandes à effectuer :
 
 ``` bash
-$ make
-$ sudo make install
-$ sudo ldconfig
+$ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+$ sudo apt install curl
+$ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+$ sudo apt update
+$ sudo apt install ros-melodic-ros-base
+$ echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+$ source ~/.bashrc
+$ sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
+$ sudo apt-get install python3-catkin-pkg-modules
+$ sudo apt-get install python3-rospkg-modules
+$ sudo rosdep init
+$ rosdep update
+
+$ sh -c "echo \"export ROS_MASTER_URI=http://localhost:11311\" >> ~/.bashrc"
+$ sh -c "echo \"export ROS_HOSTNAME=localhost\" >> ~/.bashrc"
 ```
