@@ -24,14 +24,11 @@ $ sudo apt-get install ros-noetic-move-base ros-noetic-urdf ros-noetic-xacro
 $ sudo apt-get install ros-noetic-compressed-image-transport ros-noetic-rqt* ros-noetic-rviz
 $ sudo apt-get install ros-noetic-gmapping ros-noetic-navigation ros-noetic-interactive-markers
 
-$ sudo apt install ros-noetic-dynamixel-sdk
-$ sudo apt install ros-noetic-turtlebot3-msgs
-$ sudo apt install ros-noetic-turtlebot3
-
-$ echo "export TURTLEBOT3_MODEL=waffle_pi" >> ~/.bashrc
-$ source ~/.bashrc
-
+$ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws/src/
+$ git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+$ git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+$ git clone -b kinetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
 $ git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation.git
 $ git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation_simulations.git
 $ git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
@@ -39,6 +36,10 @@ $ sudo apt install ros-noetic-ros-control*
 $ sudo apt install ros-noetic-control*
 $ sudo apt install ros-noetic-moveit*
 $ cd ~/catkin_ws && catkin_make
+$ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+
+$ echo "export TURTLEBOT3_MODEL=waffle_pi" >> ~/.bashrc
+$ source ~/.bashrc
 
 $ sudo apt-get install python3-catkin-pkg-modules
 $ sudo apt-get install python3-rospkg-modules
