@@ -7,14 +7,14 @@ from std_msgs.msg import Int16
 
 if __name__ == '__main__':
     # Initialisation du publisher dans le noeud
-    rospy.init_node('EP')
+    rospy.init_node('envoi_nombre')
 
     # Publisher -> Sender -> Envoi d'information
-    p = rospy.Publisher('InfoDuRobot', Int16, queue_size=10)
+    p = rospy.Publisher('programme_nombre', Int16, queue_size=10)
 
 
     while True:
         p.publish(int(input("Envoi un nombre : ")))
 
-    #Pour ne pas que le programme python se s'arrete avant le noeud
+    # Pour pas que le programme python ne se stop avant le noeud ROS
     rospy.spin()
