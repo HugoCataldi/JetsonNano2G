@@ -9,14 +9,14 @@ from sensor_msgs.msg import JointState
 def callback(data):
     info = "\n"
     for i in range(7):
-        info += ("Nom : {}\n\tPosition: {}\n\tVelocity : {}\n\tEffort : {}\n".format(data.name[i],data.position[i],data.velocity[i],data.effort[i]))
+        info += ("Nom : {}\n\tPosition : {}\n\tVelocité : {}\n\tEffort : {}\n".format(data.name[i],data.position[i],data.velocity[i],data.effort[i]))
     rospy.loginfo(info)
 
 
 # Test d'un subscriber qui récupère les informations liées aux dynamixels du robot
 if __name__ == '__main__':
     # Initialisation du noeud
-    rospy.init_node('InfoDuRobot')
+    rospy.init_node('info_dynamixels')
 
     # Subscriber -> Listener -> Recuperation d'information sur le robot (la position des articulation en rd/s)
     rospy.Subscriber('joint_states', JointState, callback)
