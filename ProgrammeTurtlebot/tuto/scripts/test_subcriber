@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+
+import rospy
+from std_msgs.msg import Int16
+
+
+# Recuperation d'une nouvelle information
+def callback(pose):
+    print("Reçois un nombre :",pose.data)
+
+
+if __name__ == '__main__':
+    # Initialisation Subscriber dans le noeud
+    rospy.init_node('RP')
+
+    # Subscriber -> Listener -> Recuperation d'information
+    rospy.Subscriber('InfoDuRobot', Int16, callback)
+
+    #Pour ne pas que le programme python se s'arrete avant le noeud
+    rospy.spin()
