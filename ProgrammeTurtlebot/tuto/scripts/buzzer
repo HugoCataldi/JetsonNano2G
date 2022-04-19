@@ -8,7 +8,7 @@ from turtlebot3_msgs.msg import Sound
 # Test des publisher sur le buzzer du robot (on envoie une requête pour activer le buzzer)
 if __name__ == '__main__':
     # Initialisation du noeud
-    rospy.init_node('ActionDuRobot')
+    rospy.init_node('action_buzzer')
 
     # Publisher -> Sender -> Action sur le robot
     p = rospy.Publisher('sound', Sound, queue_size=10)
