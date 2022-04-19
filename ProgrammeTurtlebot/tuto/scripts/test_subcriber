@@ -11,7 +11,7 @@ def callback(pose):
 
 
 if __name__ == '__main__':
-    # Initialisation d'un Subscriber dans le noeud
+    # Initialisation du Subscriber dans le noeud
     rospy.init_node('recoi_nombre')
 
     # Subscriber -> Listener -> Recuperation d'information
