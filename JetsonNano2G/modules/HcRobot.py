@@ -36,12 +36,12 @@ class robot:
 
     def droite(self):
         self.reset()
-        self.target_angular_vel = checkAngularLimitVelocity(self.target_angular_vel + ANG_VEL_STEP_SIZE,self.model)
+        self.target_angular_vel = checkAngularLimitVelocity(self.target_angular_vel - ANG_VEL_STEP_SIZE,self.model)
         self.go()
 
     def gauche(self):
         self.reset()
-        self.target_angular_vel = checkAngularLimitVelocity(self.target_angular_vel - ANG_VEL_STEP_SIZE,self.model)
+        self.target_angular_vel = checkAngularLimitVelocity(self.target_angular_vel + ANG_VEL_STEP_SIZE,self.model)
         self.go()
 
     def stop(self):
