@@ -46,17 +46,17 @@ def pose_droite(art1, art2, p):
     global msg1, msg2
     if(art1.e or art2.e):
         if(art1.etat == 0):
-            if(art2.etat == 0):
+            if(art2.etat == 0):      #  Ext
                 msg2 = "NONE"
-                msg1 = "DROITE"    #  Ext
+                msg1 = "DROITE"
                 p.publish(msg1)
-            elif(art2.etat == 1):
+            elif(art2.etat == 1):    # Mil
                 msg2 = "NONE"
-                msg1 = "AVANCER"   # Mil
+                msg1 = "AVANCER"
                 p.publish(msg1)
-            #elif(art2.etat == 2):
+            #elif(art2.etat == 2):   # Int
             #    msg2 = "NONE"
-            #    msg1 = "STOP"     # Int
+            #    msg1 = "STOP"
             #    p.publish(msg1)
 
 
@@ -64,17 +64,17 @@ def pose_gauche(art1, art2, p):
     global msg1, msg2
     if(art1.e or art2.e):
         if(art1.etat == 0):
-            if(art2.etat == 0):
+            if(art2.etat == 0):      #  Ext
                 msg1 = "NONE"
-                msg2 = "GAUCHE"    #  Ext
+                msg2 = "GAUCHE"
                 p.publish(msg2)
-            elif(art2.etat == 1):
+            elif(art2.etat == 1):    # Mil
                 msg1 = "NONE"
-                msg2 = "STOP"      # Mil
+                msg2 = "STOP"
                 p.publish(msg2)
-            #elif(art2.etat == 2):
+            #elif(art2.etat == 2):   # Int
             #    msg1 = "NONE"
-            #    msg2 = "STOP"     # Int
+            #    msg2 = "STOP"
             #    p.publish(msg2)
 
 
