@@ -119,12 +119,6 @@ output = jetson.utils.videoOutput(opt.output_URI, argv=sys.argv)
 rospy.init_node('listener')
 p = rospy.Publisher('jetcam', String, queue_size=10)
 
-# Enregistrement des articulations
-COUDE_GAUCHE = art(0,"COUDE_GAUCHE", ('left_shoulder', 'left_elbow', 'left_wrist'))
-COUDE_DROIT = art(1,"COUDE_DROIT", ('right_shoulder', 'right_elbow', 'right_wrist'))
-EPAULE_GAUCHE = art(2,"EPAULE_GAUCHE", ('neck', 'left_shoulder', 'left_elbow'))
-EPAULE_DROITE = art(3,"EPAULE_DROITE", ('neck', 'right_shoulder', 'right_elbow'))
-
 # Variable pour afficher la position des bras sur la fenêtre
 msg1="none"
 msg2="none"
