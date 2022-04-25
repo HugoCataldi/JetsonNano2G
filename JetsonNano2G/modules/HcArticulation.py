@@ -5,9 +5,8 @@ import numpy as np
 # Gestion des articulations
 class art:
 
-    def __init__(self, idx, nom, keypoint):
+    def __init__(self, nom, keypoint):
         # Le nom et l'id de l'articulation
-        self.idx = idx
         self.nom = nom
         
         # Les trois points-clés pour calculer l'angle de l'articulation
