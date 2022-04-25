@@ -120,8 +120,8 @@ rospy.init_node('listener')
 p = rospy.Publisher('jetcam', String, queue_size=10)
 
 # Variable pour afficher la position des bras sur la fenêtre
-msg1="none"
-msg2="none"
+msg1="NONE"
+msg2="NONE"
 
 
 
