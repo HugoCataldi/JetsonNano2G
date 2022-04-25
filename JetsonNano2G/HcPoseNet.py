@@ -127,19 +127,19 @@ while True:
     # Boucle for pour le traitement des informatation de chaque pose/personne détectée
     for (idx,pose) in enumerate(poses):
         print("Personne n°{:d} :".format(idx+1))
-
-        COUDE_GAUCHE.calc(pose)
-        COUDE_GAUCHE.info()
-        EPAULE_GAUCHE.calc(pose)
-        EPAULE_GAUCHE.info()
-
-        COUDE_DROIT.calc(pose)
-        COUDE_DROIT.info()
-        EPAULE_DROITE.calc(pose)
-        EPAULE_DROITE.info()
-
         if(idx == 0):
+            COUDE_GAUCHE.calc(pose)
+            COUDE_GAUCHE.info()
+		
+            EPAULE_GAUCHE.calc(pose)
+            EPAULE_GAUCHE.info()
 
+            COUDE_DROIT.calc(pose)
+            COUDE_DROIT.info()
+		
+            EPAULE_DROITE.calc(pose)
+            EPAULE_DROITE.info()
+		
             pose_gauche(EPAULE_GAUCHE,COUDE_GAUCHE)
             pose_droite(EPAULE_DROITE,COUDE_DROIT)
 
