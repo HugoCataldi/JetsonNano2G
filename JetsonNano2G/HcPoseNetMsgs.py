@@ -30,7 +30,7 @@ import argparse
 import sys
 import os
 
-# Ajout des librairies pour calculer les angles
+# Ajout du module pour calculer les angles
 from modules.HcArticulation import *
 
 # Ajout des librairies ROS
