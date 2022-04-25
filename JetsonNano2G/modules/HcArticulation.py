@@ -71,3 +71,13 @@ class art:
             print("\t{:s} : Angle : {:d}° | Etat : {:d}".format(self.nom,self.angle,self.etat))
         else:
             print("\t{:s} n'est pas totalement detecté(e)".format(self.nom))
+
+
+
+# Enregistrement des articulations
+COUDE_GAUCHE = art("COUDE_GAUCHE", ('left_shoulder', 'left_elbow', 'left_wrist'))
+COUDE_DROIT = art("COUDE_DROIT", ('right_shoulder', 'right_elbow', 'right_wrist'))
+EPAULE_GAUCHE = art("EPAULE_GAUCHE", ('neck', 'left_shoulder', 'left_elbow'))
+EPAULE_DROITE = art("EPAULE_DROITE", ('neck', 'right_shoulder', 'right_elbow'))
+            
+            
