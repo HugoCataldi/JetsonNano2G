@@ -56,7 +56,7 @@ def pose_droite(art1, art2):
             #elif(art2.etat == 2):
             #    msg2 = "NONE"
             #    msg1 = "STOP"     # Int
-            #    robot.stop()
+            #    turtlebot3.stop()
 
 
 def pose_gauche(art1, art2):
@@ -74,7 +74,7 @@ def pose_gauche(art1, art2):
             #elif(art2.etat == 2):
             #    msg1 = "NONE"
             #    msg2 = "STOP"     # Int
-            #    robot.stop()
+            #    turtlebot3.stop()
 
 
 
