@@ -143,18 +143,19 @@ while True:
     for (idx,pose) in enumerate(poses):
         print("Personne n°{:d} :".format(idx+1))
 
-        COUDE_GAUCHE.calc(pose)
-        COUDE_GAUCHE.info()
-        EPAULE_GAUCHE.calc(pose)
-        EPAULE_GAUCHE.info()
-
-        COUDE_DROIT.calc(pose)
-        COUDE_DROIT.info()
-        EPAULE_DROITE.calc(pose)
-        EPAULE_DROITE.info()
-
         if(idx == 0):
+            COUDE_GAUCHE.calc(pose)
+            COUDE_GAUCHE.info()
+		
+            EPAULE_GAUCHE.calc(pose)
+            EPAULE_GAUCHE.info()
 
+            COUDE_DROIT.calc(pose)
+            COUDE_DROIT.info()
+		
+            EPAULE_DROITE.calc(pose)
+            EPAULE_DROITE.info()
+		
             pose_gauche(EPAULE_GAUCHE,COUDE_GAUCHE,p)
             pose_droite(EPAULE_DROITE,COUDE_DROIT,p)
 
