@@ -104,12 +104,6 @@ net = jetson.inference.poseNet(opt.network, sys.argv, opt.threshold)
 input = jetson.utils.videoSource(opt.input_URI, argv=sys.argv)
 output = jetson.utils.videoOutput(opt.output_URI, argv=sys.argv)
 
-# Enregistrement des articulations
-COUDE_GAUCHE = art(0,"COUDE_GAUCHE", ('left_shoulder', 'left_elbow', 'left_wrist'))
-COUDE_DROIT = art(1,"COUDE_DROIT", ('right_shoulder', 'right_elbow', 'right_wrist'))
-EPAULE_GAUCHE = art(2,"EPAULE_GAUCHE", ('neck', 'left_shoulder', 'left_elbow'))
-EPAULE_DROITE = art(3,"EPAULE_DROITE", ('neck', 'right_shoulder', 'right_elbow'))
-
 # Variable pour afficher la position des bras sur la fenêtre
 msg1="NONE"
 msg2="NONE"
