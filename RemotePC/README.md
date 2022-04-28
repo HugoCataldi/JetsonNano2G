@@ -24,9 +24,6 @@ $ sudo apt-get install ros-noetic-move-base ros-noetic-urdf ros-noetic-xacro
 $ sudo apt-get install ros-noetic-compressed-image-transport ros-noetic-rqt* ros-noetic-rviz
 $ sudo apt-get install ros-noetic-gmapping ros-noetic-navigation ros-noetic-interactive-markers
 
-$ sudo apt-get install ros-noetic-dynamixel-sdk
-$ sudo apt-get install ros-noetic-turtlebot3-msgs
-
 $ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws/src/
 $ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
