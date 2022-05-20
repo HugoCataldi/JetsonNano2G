@@ -88,7 +88,6 @@ fudge  127.127.1.0 stratum 10
 $ nano ~/.bashrc
 $ source ~/.bashrc
 ```
-<img src="images/bashrc.PNG" width="650">
 
 **ROS_MASTER_URI** : L'adresse IP de l'ordinateur qui lance le nœud ROS master
 
