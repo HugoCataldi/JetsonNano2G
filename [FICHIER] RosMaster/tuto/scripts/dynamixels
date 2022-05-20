@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+
+import rospy
+from sensor_msgs.msg import JointState
+
+
+# Fonction pour afficher les données sur le terminal
+def callback(data):
+    info = "\n"
+    for i in range(7):
+        info += ("Nom : {}\n\tPosition : {}\n\tVelocite : {}\n\tEffort : {}\n".format(
+            data.name[i], data.position[i], data.velocity[i], data.effort[i]))
+    rospy.loginfo(info)
+
+
+# Test d'un subscriber qui récupère les informations liées aux dynamixels du robot
+if __name__ == '__main__':
+    # Initialisation du noeud
+    rospy.init_node('info_dynamixels')
+
+    # Subscriber -> Listener -> Récupération d'information sur le robot (la position des articulations en rd /s)
+    rospy.Subscriber('joint_states', JointState, callback)
+
+    # Pour ne pas que le programme python se stop avant le noeud ROS
+    rospy.spin()
