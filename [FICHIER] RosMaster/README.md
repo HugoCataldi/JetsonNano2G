@@ -11,40 +11,53 @@ Résumé des commandes à effectuer :
 ``` bash
 $ sudo apt update
 $ sudo apt upgrade
-$ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_noetic.sh
-$ chmod 755 ./install_ros_noetic.sh 
-$ bash ./install_ros_noetic.sh
+$ wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_melodic.sh
+$ chmod 755 ./install_ros_melodic.sh 
+$ bash ./install_ros_melodic.sh
 
-$ sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy
-$ sudo apt-get install ros-noetic-teleop-twist-keyboard ros-noetic-laser-proc
-$ sudo apt-get install ros-noetic-rgbd-launch ros-noetic-rosserial-arduino
-$ sudo apt-get install ros-noetic-rosserial-python ros-noetic-rosserial-client
-$ sudo apt-get install ros-noetic-rosserial-msgs ros-noetic-amcl ros-noetic-map-server
-$ sudo apt-get install ros-noetic-move-base ros-noetic-urdf ros-noetic-xacro
-$ sudo apt-get install ros-noetic-compressed-image-transport ros-noetic-rqt* ros-noetic-rviz
-$ sudo apt-get install ros-noetic-gmapping ros-noetic-navigation ros-noetic-interactive-markers
+$ sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy
+$ sudo apt-get install ros-melodic-teleop-twist-keyboard ros-melodic-laser-proc
+$ sudo apt-get install ros-melodic-rgbd-launch ros-melodic-depthimage-to-laserscan
+$ sudo apt-get install ros-melodic-rosserial-arduino ros-melodic-rosserial-python
+$ sudo apt-get install ros-melodic-rosserial-server ros-melodic-rosserial-client
+$ sudo apt-get install ros-melodic-rosserial-msgs ros-melodic-amcl ros-melodic-map-server
+$ sudo apt-get install ros-melodic-move-base ros-melodic-urdf ros-melodic-xacro
+$ sudo apt-get install ros-melodic-compressed-image-transport ros-melodic-rqt*
+$ sudo apt-get install ros-melodic-gmapping ros-melodic-navigation ros-melodic-interactive-markers
 
 $ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws/src/
-$ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
-$ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
-$ git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
+$ git clone -b melodic-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+$ git clone -b melodic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+$ git clone -b melodic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
 
 $ git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation.git
 $ git clone https://github.com/ROBOTIS-GIT/turtlebot3_manipulation_simulations.git
 $ git clone https://github.com/ROBOTIS-GIT/open_manipulator_dependencies.git
-$ sudo apt install ros-noetic-ros-control*
-$ sudo apt install ros-noetic-control*
-$ sudo apt install ros-noetic-moveit*
-$ cd ~/catkin_ws && catkin_make
+$ sudo apt install ros-melodic-ros-control*
+$ sudo apt install ros-melodic-control*
+$ sudo apt install ros-melodic-moveit*
 $ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
-
 $ echo "export TURTLEBOT3_MODEL=waffle_pi" >> ~/.bashrc
 $ source ~/.bashrc
+$ cd ~/catkin_ws && catkin_make
+
 
 $ sudo apt-get install python3-catkin-pkg-modules
 $ sudo apt-get install python3-rospkg-modules
 ```
+
+### Pour configurer ROS, il faut éditer  le fichier bashrc avec la commande suivante :
+``` bash
+$ nano ~/.bashrc
+$ source ~/.bashrc
+```
+
+**ROS_MASTER_URI** : L'adresse IP de l'ordinateur qui lance le nœud ROS master
+
+**ROS_HOSTNAME** : L'adresse IP de l'ordinateur qui lance le nœud ROS master
+
+**TURTLEBOT3_MODEL** : Model du turtlebot [ waffle_pi , waffle , burger ]
 
 # 3) Crée un serveur NTP (synchronisation des horloge)
 
@@ -78,14 +91,4 @@ Pour mettre a jour l'horloge d'un autre appareil (ex: Le turtlebot3):
 sudo ntp -u 192.168.1.10
 ```
 
-### Pour configurer ROS, il faut éditer  le fichier bashrc avec la commande suivante :
-``` bash
-$ nano ~/.bashrc
-$ source ~/.bashrc
-```
 
-**ROS_MASTER_URI** : L'adresse IP de l'ordinateur qui lance le nœud ROS master
-
-**ROS_HOSTNAME** : L'adresse IP de l'ordinateur qui lance le nœud ROS master
-
-**TURTLEBOT3_MODEL** : Model du turtlebot [ waffle_pi , waffle , burger ]
