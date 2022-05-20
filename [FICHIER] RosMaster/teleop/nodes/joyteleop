@@ -1,0 +1,234 @@
+#!/usr/bin/env python3
+
+import rospy
+from modules.HcRobot import *
+from std_msgs.msg import String
+
+import threading
+
+
+from tkinter import *
+import pygame
+
+
+
+
+# ########################################### #
+#     Fonction pour lancer l'IHM Tkinter      #
+# ########################################### #
+def IHM():
+    global STOP,CTRL
+    CTRL = Tk()
+    CTRL.title("Robot Controller")
+    CTRL.config(bg='#95a5a6')
+    CTRL.resizable(0, 0)
+    Label(CTRL, bg='#95a5a6', width=5).grid(row=0, column=0)
+    Label(CTRL, bg='#95a5a6', width=5).grid(row=0, column=10)
+    Label(CTRL, bg='#95a5a6', height=2).grid(row=1, column=4)
+    Label(CTRL, bg='#95a5a6', height=2).grid(row=5, column=0)
+    Label(CTRL, bg='#95a5a6', height=2).grid(row=11, column=0)
+    Label(CTRL, bg='#95a5a6', height=2).grid(row=13, column=0)
+    Label(CTRL, bg='#95a5a6', width=5).grid(row=0, column=4)
+    Label(CTRL, bg='#95a5a6', width=5).grid(row=0, column=6)
+    Label(CTRL, bg='black', height=34, width=2).grid(row=0, column=5, rowspan=15)
+    Button(CTRL, text='QUITER', command=CTRL.quit, bg='red4', height=2, width=14, bd=0, fg='white', font=('arial', 10, 'bold')).grid(row=15, column=4, columnspan=3)
+
+    Label(CTRL, text='Commande du bras robotique', font=('arial', 15, 'bold'), bg='#7f8c8d').grid(row=0, column=1, columnspan=3)
+    Button(CTRL, text='*', command=lambda: armRotation(-1), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=2, column=1)
+    Button(CTRL, text='A', command=lambda: armRotation(0), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=2, column=2)
+    Button(CTRL, text='*', command=lambda: armRotation(1), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=2, column=3)
+    Button(CTRL, text='<', command=lambda: armRotation(-2), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=3, column=1)
+    Button(CTRL, text='>',  command=lambda: armRotation(2), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=3, column=3)
+    Button(CTRL, text='*',  command=lambda: armRotation(-3), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=4, column=1)
+    Button(CTRL, text='*', command=lambda: armRotation(3), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=4, column=3)
+    Button(CTRL, text='Position Haute', command=lambda: armPose(2), bg='#16a085', height=1, width=18, bd=0, fg='white', font=('arial', 12, 'bold')).grid(row=6, column=1, columnspan=3)
+    Button(CTRL, text='Position Initial', command=lambda: armPose(0), bg='#16a085', height=1, width=18, bd=0, fg='white', font=('arial', 12, 'bold')).grid(row=7, column=1, columnspan=3)
+    Button(CTRL, text='Position Avant', command=lambda: armPose(1), bg='#16a085', height=1, width=18, bd=0, fg='white', font=('arial', 12, 'bold')).grid(row=8, column=1, columnspan=3)
+    Button(CTRL, text='Position Basse', command=lambda: armPose(4), bg='#16a085', height=1, width=18, bd=0, fg='white', font=('arial', 12, 'bold')).grid(row=9, column=1, columnspan=3)
+    Button(CTRL, text='Position Milieu', command=lambda: armPose(3), bg='#16a085', height=1, width=18, bd=0, fg='white', font=('arial', 12, 'bold')).grid(row=10, column=1, columnspan=3)
+    Button(CTRL, text='Ouvrir', command=lambda: armGripper(1), bg='#8e44ad', height=1, width=5, bd=0, fg='white', font=('arial', 12, 'bold')).grid(row=12, column=1)
+    Button(CTRL, text='Fermer', command=lambda: armGripper(0), bg='#8e44ad', height=1, width=5, bd=0, fg='white', font=('arial', 12, 'bold')).grid(row=12, column=3)
+    Button(CTRL, text='RESET', command=armReset, bg='#d35400', height=2, width=5, bd=0, fg='white', font=('arial', 12, 'bold')).grid(row=14, column=1, columnspan=3)
+
+    Label(CTRL, text='Commande du turtlebot3', font=('arial', 15, 'bold'), bg='#7f8c8d').grid(row=0, column=7, columnspan=3)
+    Button(CTRL, text='*', command=lambda: robotMove(1), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=2, column=7)
+    Button(CTRL, text='A', command=lambda: robotMove(0), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=2, column=8)
+    Button(CTRL, text='*', command=lambda: robotMove(-1), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=2, column=9)
+    Button(CTRL, text='<', command=lambda: robotMove(2), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=3, column=7)
+    Button(CTRL, text='>',  command=lambda: robotMove(-2), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=3, column=9)
+    Button(CTRL, text='V', command=lambda: robotMove(-3), bg='#34495e', height=1, width=2, bd=0, fg='white', font=('arial', 20, 'bold')).grid(row=4, column=8)
+
+    Button(CTRL, text='STOP', command=lambda: robotMove(3), bg='#d35400', height=2, width=5,bd=0, fg='white', font=('arial', 12, 'bold')).grid(row=14, column=7, columnspan=3)
+    CTRL.mainloop()
+
+
+
+
+# #################################################### #
+#     Fonction pour lancer la gestion du joystick      #
+# #################################################### #
+def joystick():
+    global STOP,CTRL,rotation,gripper
+
+    axis1 = 0
+    axis2 = 0
+    axis3 = 0
+
+    etat_joystick = False
+
+    while STOP:
+        if(etat_joystick == False):
+            
+            pygame.init()
+            pygame.joystick.init()
+            rospy.sleep(1)
+            if(pygame.joystick.get_count() == 0):
+                pygame.joystick.quit()
+                pygame.quit()
+                Label(CTRL, text='Le joystick est inactif', font=('arial', 15, 'bold'), bg='red').grid(row=8, column=7, columnspan=3)
+                rospy.sleep(1)
+                pass
+            else:
+                for i in range(pygame.joystick.get_count()):
+                    joystick = pygame.joystick.Joystick(i)
+                    joystick.init()
+                Label(CTRL, text=' Le joystick est actif  ', font=('arial', 15, 'bold'), bg='green').grid(row=8, column=7, columnspan=3)
+                etat_joystick = True
+                rospy.sleep(1)
+                pass
+            
+        elif(etat_joystick == True ):
+            if(pygame.joystick.get_count() == 0):
+                pygame.joystick.quit()
+                pygame.quit()
+                
+                Label(CTRL, text='Le joystick est inactif', font=('arial', 15, 'bold'), bg='red').grid(row=8, column=7, columnspan=3)
+                etat_joystick = False
+                rospy.sleep(1)
+                pass
+            else:
+                for event in pygame.event.get():
+                    
+                    # Event en cas d'appuis sur un bouton
+                    if event.type == pygame.JOYBUTTONUP:
+                        if(event.button == 0 and gripper == 0): armGripper(1)
+                        elif(event.button == 0 and gripper == 1): armGripper(0)
+                        elif(event.button == 1): armReset()
+                        elif(event.button == 2): armPose(1)
+                        elif(event.button == 3): armPose(2)
+                        elif(event.button == 4): armPose(3)
+                        elif(event.button == 5): armPose(4)
+
+                    elif event.type == pygame.JOYAXISMOTION:
+                        # Joystick pour le control de trajectoire
+                        if(event.axis == 0 or event.axis == 1):
+                            if(event.axis == 0):
+                                if(0.75 <= event.value <= 1 and axis1 != 2): axis1 = 2
+                                elif(-1 <= event.value <= -0.75 and axis1 != 1): axis1 = 1
+                                elif(-0.25 <= event.value <= 0.25 and axis1 != 0): axis1 = 0
+                            elif(event.axis == 1):
+                                if(0.75 <= event.value <= 1 and axis2 != 2): axis2 = 2
+                                elif(-1 <= event.value <= -0.75 and axis2 != 1): axis2 = 1
+                                elif(-0.25 <= event.value <= 0.25 and axis2 != 0): axis2 = 0
+
+                            # Changement de la trajectoire du robot
+                            turtlebot3.STOP()
+                            if(axis1 > 0 or axis2 > 0):
+                                if(axis1 == 2):
+                                    turtlebot3.GAUCHE()
+                                elif(axis1 == 1):
+                                    turtlebot3.DROITE()
+                                if(axis2 == 2):
+                                    turtlebot3.RECULER()
+                                elif(axis2 == 1):
+                                    turtlebot3.AVANCER()
+                            turtlebot3.GO()
+
+                        # Joystick pour le control de rotation du bras
+                        elif(event.axis == 2):
+                            if(0.75 <= event.value <= 1 and axis3 != 2):
+                                axis3 = 2
+                                if(rotation < 3): armRotation(rotation + 1)
+                            elif(-1 <= event.value <= -0.75 and axis3 != 1):
+                                axis3 = 1
+                                if(rotation > -3): armRotation(rotation - 1)
+                            elif(-0.25 <= event.value <= 0.25 and axis3 != 0): axis3 = 0
+
+
+# Fonction pour appliquer des position basique sur le bras robotique
+def armPose(num):
+    global p,pose
+    pose = num
+    p.publish("pose:{:s}".format(str(num)))
+
+# Fonction pour faire tourner le bras robotique
+def armRotation(num):
+    global p,rotation
+    rotation = num
+    p.publish("rotate:{:s}".format(str(num)))
+
+# Fonction pour ouvrir ou fermer le bras robotique
+def armGripper(num):
+    global p,gripper
+    gripper = num
+    p.publish("gripper:{:s}".format(str(num)))
+
+# Fonction pour remettre le bras robotique dans sa position initial
+def armReset():
+    global p,rotation
+    rotation = 0
+    p.publish("reset")
+
+# Fonction pour faire bouger le robot
+def robotMove(num):
+    global turtlebot3
+
+    turtlebot3.STOP()
+    if(num == -3):
+        turtlebot3.RECULER()
+    elif(num == -2):
+        turtlebot3.GAUCHE()
+    elif(num == -1):
+        turtlebot3.GAUCHE()
+        turtlebot3.AVANCER()
+    elif(num == 0):
+        turtlebot3.AVANCER()
+    elif(num == 1):
+        turtlebot3.DROITE()
+        turtlebot3.AVANCER()
+    elif(num == 2):
+        turtlebot3.DROITE()
+    turtlebot3.GO()
+
+if __name__ == '__main__':
+    # Initialisation du noeud ROS
+    rospy.init_node('tbt3_teleop')
+
+    # Initialisation du robot pour controler sa trajectoire
+    turtlebot3 = robot(0, "waffle")
+
+    # Publisher -> Sender -> Envoi d'une commande pour le bras
+    p = rospy.Publisher('omx_cmd', String, queue_size=10)
+    
+    gripper = 0
+    rotation = 0
+    pose = 0
+
+
+
+    # ================== IHM Tkinter
+    process_IMH = threading.Thread(target=IHM)
+    process_IMH.start()
+
+    # ================== Gestion du joystick
+    STOP = True
+    process_joy = threading.Thread(target=joystick)
+    process_joy.start()
+
+    # ================== Fin du programme
+    process_IMH.join()
+    STOP = False
+    robotMove(3)
+    armReset()
+
+
