@@ -1,8 +1,8 @@
-# Installation d'Ubuntu 20.04
+# 1) Installation d'Ubuntu 18.04
 
-Toutes les informations liées à l'installation d'ubuntu sont ici : https://releases.ubuntu.com/20.04/
+Toutes les informations liées à l'installation d'ubuntu sont ici : https://releases.ubuntu.com/18.04/
 
-# Installation de ROS Noetic
+# 2) Installation de ROS Melodic
 
 Toutes les informations liées au projet sont ici : https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/#pc-setup
 
@@ -44,43 +44,38 @@ $ source ~/.bashrc
 
 $ sudo apt-get install python3-catkin-pkg-modules
 $ sudo apt-get install python3-rospkg-modules
+```
 
+# 3) Crée un serveur NTP (synchronisation des horloge)
 
+Installez le package ntp et configurez le :
+``` bash
+sudo apt-get install ntp
 
+sudo nano /etc/ntp.conf
+```
 
-
-
-
-
-
-sudo /etc/init.d/ntp stop
-sudo ntpd -q 192.168.1.10
-sudo ntpdate 192.168.1.10
-
-
-
- gst-launch-1.0 -v udpsrc port=1234 \
- caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! \
- rtph264depay ! decodebin ! videoconvert ! autovideosink
-
-
-
-
-
-
+Ajoutez les ligne suivante dans le nano :
+``` bash
 driftfile /var/lib/ntp/drift
 broadcastdelay 0.008
-
 # Give localhost full access rights
 restrict 127.0.0.1
-
 # Give machines on our network access to query us
 restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
-
 broadcast 192.168.1.0
-
 server 127.127.1.0 prefer
 fudge  127.127.1.0 stratum 10
+```
+
+Pour relancer le serveur NTP
+``` bash
+sudo /etc/init.d/ntp restart
+```
+
+Pour mettre a jour l'horloge d'un autre appareil (ex: Le turtlebot3):
+``` bash
+sudo ntp -u 192.168.1.10
 ```
 
 ### Pour configurer ROS, il faut éditer  le fichier bashrc avec la commande suivante :
