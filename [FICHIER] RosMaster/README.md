@@ -81,12 +81,12 @@ server 127.127.1.0 prefer
 fudge  127.127.1.0 stratum 10
 ```
 
-Pour relancer le serveur NTP
+Pour relancer le serveur NTP :
 ``` bash
 sudo /etc/init.d/ntp restart
 ```
 
-Pour mettre a jour l'horloge d'un autre appareil (ex: Le turtlebot3):
+Pour mettre a jour l'horloge d'un autre appareil (ex: Le turtlebot3) :
 ``` bash
 sudo ntp -u 192.168.1.10
 ```
